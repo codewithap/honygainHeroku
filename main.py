@@ -7,8 +7,11 @@ app = Flask(__name__)
 
 subprocess.call("docker pull honeygain/honeygain && docker run honeygain/honeygain -tou-accept -email arijitpaine249@gmail.com -pass arijit1234# -device linux" , shell=True)
 
-
 @app.route("/")
+def home():
+    return "working"
+
+@app.route("/start")
 def s():
     def f1():
         ip = request.environ['SERVER_NAME']
